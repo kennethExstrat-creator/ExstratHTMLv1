@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Exstrat Ventures | Strategic Financial Consulting</title>
+    <meta name="description" content="Your Strategic Partner for Sustainable Growth." />
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                primary: '#2563eb',   // Blue 600
+                secondary: '#9333ea', // Purple 600
+                dark: '#1e1b4b',      // Indigo 950
+              },
+              slate: {
+                50: '#f8fafc',
+                950: '#020617',
+              }
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              serif: ['Playfair Display', 'serif'],
+            },
+            backgroundImage: {
+              'gemini-gradient': 'linear-gradient(135deg, #2563eb 0%, #9333ea 100%)',
+              'gemini-mesh': 'radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.15) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(147, 51, 234, 0.15) 0px, transparent 50%)',
+              'gemini-dark-mesh': 'radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.3) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(147, 51, 234, 0.3) 0px, transparent 50%)',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      /* Custom Styles */
+      body { font-family: 'Inter', sans-serif; }
+      .font-serif { font-family: 'Playfair Display', serif; }
+      
+      .text-gradient {
+        background: linear-gradient(135deg, #2563eb 0%, #9333ea 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .bg-gradient-brand {
+        background: linear-gradient(135deg, #2563eb 0%, #9333ea 100%);
+      }
+      
+      /* Transitions */
+      .transition-theme {
+        transition-property: background-color, border-color, color, fill, stroke, opacity;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 700ms;
+      }
+      
+      .transition-fast {
+        transition: all 300ms ease-in-out;
+      }
+
+      /* Animations */
+      @keyframes fadeInRight {
+        from { opacity: 0; transform: translateX(20px); }
+        to { opacity: 1; transform: translateX(0); }
+      }
+      .animate-fade-in-right {
+        animation: fadeInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      /* Scrollbar */
+      ::-webkit-scrollbar { width: 10px; }
+      ::-webkit-scrollbar-track { background: #f1f5f9; }
+      .dark ::-webkit-scrollbar-track { background: #0f172a; }
+      ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 5px; }
+      .dark ::-webkit-scrollbar-thumb { background: #334155; }
+      ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "react/": "https://aistudiocdn.com/react@^19.2.1/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="text-slate-900 antialiased selection:bg-brand-primary selection:text-white relative">
+
+    <!-- Global Backgrounds -->
+    <div id="bg-light" class="fixed inset-0 z-0 bg-slate-50 transition-theme duration-1000 opacity-100">
+       <div class="absolute inset-0 bg-[radial-gradient(at_0%_0%,rgba(37,99,235,0.15)_0px,transparent_50%),radial-gradient(at_100%_100%,rgba(147,51,234,0.15)_0px,transparent_50%)] opacity-50"></div>
+    </div>
+
+    <div id="bg-dark" class="fixed inset-0 z-0 bg-slate-950 transition-theme duration-1000 opacity-0 pointer-events-none">
+       <div class="absolute inset-0 bg-gradient-to-br from-[#0f172a] via-[#1e1b4b] to-[#4c1d95] opacity-100"></div>
+       <div class="absolute inset-0 bg-[radial-gradient(at_0%_0%,rgba(37,99,235,0.3)_0px,transparent_50%),radial-gradient(at_100%_100%,rgba(147,51,234,0.3)_0px,transparent_50%)] opacity-60 mix-blend-screen"></div>
+       <!-- Animated Orbs -->
+       <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-brand-primary/20 rounded-full blur-[120px] animate-pulse mix-blend-screen"></div>
+       <div class="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-brand-secondary/20 rounded-full blur-[120px] animate-pulse mix-blend-screen" style="animation-delay: 1s;"></div>
+    </div>
+
+    <!-- Main Content Wrapper -->
+    <div class="relative z-10 transition-theme">
+      
+      <!-- Navbar -->
+      <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-3 bg-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex justify-between items-center">
+            <div class="flex items-center">
+              <a href="#home" class="text-2xl font-serif font-bold tracking-wider flex items-center gap-2 group transition-colors duration-500 text-slate-900 dark:text-white nav-logo">
+                <div class="w-8 h-8 rounded-lg bg-gradient-brand flex items-center justify-center text-white shadow-lg group-hover:shadow-blue-500/30 transition-shadow">
+                   <i class="fa-solid fa-chess-knight text-sm"></i>
+                </div>
+                <span>Exstrat.</span>
+              </a>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8">
+              <a href="#home" class="nav-link text-sm font-medium transition-fast text-slate-700 hover:text-brand-primary dark:text-slate-200 dark:hover:text-white">Home</a>
+              <a href="#approach" class="nav-link text-sm font-medium transition-fast text-slate-700 hover:text-brand-primary dark:text-slate-200 dark:hover:text-white">Our Approach</a>
+              <a href="#services" class="nav-link text-sm font-medium transition-fast text-slate-700 hover:text-brand-primary dark:text-slate-200 dark:hover:text-white">Our Services</a>
+              <a href="#about" class="nav-link text-sm font-medium transition-fast text-slate-700 hover:text-brand-primary dark:text-slate-200 dark:hover:text-white">About Us</a>
+              <a href="#contact" class="nav-link text-sm font-medium transition-fast text-slate-700 hover:text-brand-primary dark:text-slate-200 dark:hover:text-white">Contact Us</a>
+              
+              <a href="https://calendly.com/kenneth-exstrat/30min" target="_blank" rel="noopener noreferrer" class="px-6 py-2.5 bg-gradient-brand text-white hover:opacity-90 transition-all duration-300 rounded-full font-semibold text-sm shadow-md hover:shadow-lg hover:shadow-blue-500/30 transform hover:-translate-y-0.5">
+                Book Now
+              </a>
+            </div>
+  
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden flex items-center">
+              <button id="mobile-menu-btn" class="transition-colors duration-300 focus:outline-none text-slate-800 dark:text-white">
+                <i class="fa-solid fa-bars text-2xl"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="md:hidden absolute top-full left-0 w-full transition-all duration-300 ease-in-out overflow-hidden max-h-0 opacity-0 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 shadow-xl">
+          <div class="flex flex-col px-4 py-6 space-y-4">
+            <a href="#home" class="mobile-link font-medium block text-center text-slate-700 dark:text-slate-300">Home</a>
+            <a href="#approach" class="mobile-link font-medium block text-center text-slate-700 dark:text-slate-300">Our Approach</a>
+            <a href="#services" class="mobile-link font-medium block text-center text-slate-700 dark:text-slate-300">Our Services</a>
+            <a href="#about" class="mobile-link font-medium block text-center text-slate-700 dark:text-slate-300">About Us</a>
+            <a href="#contact" class="mobile-link font-medium block text-center text-slate-700 dark:text-slate-300">Contact Us</a>
+            <a href="https://calendly.com/kenneth-exstrat/30min" target="_blank" rel="noopener noreferrer" class="block w-full text-center px-6 py-3 bg-gradient-brand text-white font-bold rounded-full shadow-lg">
+              Schedule Consultation
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Hero Section -->
+      <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden transition-theme">
+        <!-- Decorative Circles -->
+        <div class="absolute top-20 right-0 w-96 h-96 bg-brand-primary/10 rounded-full blur-3xl -mr-40 pointer-events-none mix-blend-multiply dark:mix-blend-normal dark:bg-brand-primary/20"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-brand-secondary/10 rounded-full blur-3xl -ml-40 pointer-events-none mix-blend-multiply dark:mix-blend-normal dark:bg-brand-secondary/20"></div>
+
+        <div class="container mx-auto px-4 z-10 text-center relative">
+          <div class="inline-block mb-6 px-4 py-1.5 rounded-full bg-white/60 dark:bg-white/10 backdrop-blur-sm border border-slate-200/50 dark:border-white/10 shadow-sm transition-theme">
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-brand-secondary text-sm font-bold tracking-widest uppercase">
+              Exstrat Ventures
+            </span>
+          </div>
+          
+          <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-slate-900 dark:text-white mb-6 leading-tight max-w-5xl mx-auto transition-theme">
+            Your Strategic Partner for <br />
+            <span class="text-gradient">Sustainable Growth</span>.
+          </h1>
+          
+          <p class="text-lg md:text-xl text-slate-600 dark:text-slate-300 mb-10 max-w-2xl mx-auto font-normal leading-relaxed transition-theme">
+            Providing comprehensive financial and management consulting to bridge the gap between <span class="font-semibold text-slate-900 dark:text-white">strategy</span> and <span class="font-semibold text-slate-900 dark:text-white">execution</span>.
+          </p>
+          
+          <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a href="https://calendly.com/kenneth-exstrat/30min" target="_blank" rel="noopener noreferrer" class="group relative px-8 py-4 bg-gradient-brand text-white font-bold text-lg rounded-full shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all duration-300 transform hover:-translate-y-1 inline-flex items-center">
+              Schedule a Consultation
+              <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+            </a>
+            
+            <a href="#approach" onclick="smoothScroll(event, '#approach')" class="px-8 py-4 text-slate-700 dark:text-slate-200 bg-white/60 dark:bg-white/10 backdrop-blur-md border border-slate-200/60 dark:border-white/10 hover:border-brand-primary dark:hover:border-brand-secondary hover:text-brand-primary dark:hover:text-white rounded-full transition-all duration-300 font-medium shadow-sm hover:shadow-md">
+              Learn Our Approach
+            </a>
+          </div>
+        </div>
+        
+        <!-- Scroll Down Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce hidden md:block">
+          <a href="#services" onclick="smoothScroll(event, '#services')" class="text-slate-400 hover:text-brand-primary dark:hover:text-white transition-colors">
+            <i class="fa-solid fa-chevron-down text-2xl"></i>
+          </a>
+        </div>
+      </section>
+
+      <!-- Approach Section -->
+      <section id="approach" class="py-24 relative transition-theme">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-16">
+            <h2 class="text-brand-primary dark:text-brand-secondary font-bold uppercase tracking-widest text-sm mb-2 transition-theme">Our Methodology</h2>
+            <h3 class="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white font-bold transition-theme">From Vision to Reality</h3>
+            <div class="w-24 h-1 bg-gradient-brand mx-auto mt-6 rounded-full opacity-80"></div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            <!-- Stage 1 -->
+            <div class="bg-white/70 dark:bg-slate-800/40 backdrop-blur-md border border-white/50 dark:border-white/5 rounded-2xl p-8 transition-all duration-300 group shadow-sm hover:shadow-xl hover:shadow-blue-900/5 transform hover:-translate-y-2 hover:scale-105">
+              <div class="flex items-center justify-between mb-6">
+                <div class="w-14 h-14 rounded-xl flex items-center justify-center bg-white dark:bg-slate-700 shadow-md border border-slate-100 dark:border-slate-600 group-hover:scale-110 transition-transform duration-300">
+                  <i class="fa-solid fa-magnifying-glass-chart text-2xl text-transparent bg-clip-text bg-gradient-to-br from-brand-primary to-brand-secondary"></i>
+                </div>
+                <span class="text-5xl font-serif font-bold text-slate-200 dark:text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-b group-hover:from-slate-200 group-hover:to-slate-100 dark:group-hover:from-white dark:group-hover:to-slate-200 transition-colors select-none">01</span>
+              </div>
+              <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-2 transition-theme">Assess</h4>
+              <p class="text-slate-600 dark:text-slate-400 mb-6 min-h-[48px] leading-relaxed transition-theme">Aligning business vision with actionable goals.</p>
+              <ul class="space-y-3">
+                <li class="flex items-start text-sm text-slate-600 dark:text-slate-400 transition-theme"><div class="mt-1 mr-3 w-4 h-4 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-check text-green-600 dark:text-green-400 text-[10px]"></i></div> Ecosystem Mapping</li>
+                <li class="flex items-start text-sm text-slate-600 dark:text-slate-400 transition-theme"><div class="mt-1 mr-3 w-4 h-4 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-check text-green-600 dark:text-green-400 text-[10px]"></i></div> Competitive Analysis</li>
+                <li class="flex items-start text-sm text-slate-600 dark:text-slate-400 transition-theme"><div class="mt-1 mr-3 w-4 h-4 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-check text-green-600 dark:text-green-400 text-[10px]"></i></div> Business Profile</li>
+                <li class="flex items-start text-sm text-slate-600 dark:text-slate-400 transition-theme"><div class="mt-1 mr-3 w-4 h-4 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-check text-green-600 dark:text-green-400 text-[10px]"></i></div> Compliance Review</li>
+              </ul>
+            </div>
+            
+            <!-- Stage 2 -->
+            <div class="bg-white/70 dark:bg-slate-800/40 backdrop-blur-md border border-white/50 dark:border-white/5 rounded-2xl p-8 transition-all duration-300 group shadow-sm hover:shadow-xl hover:shadow-blue-900/5 transform hover:-translate-y-2 hover:scale-105">
+              <div class="flex items-center justify-between mb-6">
+                <div class="w-14 h-14 rounded-xl flex items-center justify-center bg-white dark:bg-slate-700 shadow-md border border-slate-100 dark:border-slate-600 group-hover:scale-110 transition-transform duration-300">
+                  <i class="fa-solid fa-pen-ruler text-2xl text-transparent bg-clip-text bg-gradient-to-br from-brand-primary to-brand-secondary"></i>
+                </div>
+                <span class="text-5xl font-serif font-bold text-slate-200 dark:text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-b group-hover:from-slate-200 group-hover:to-slate-100 dark:group-hover:from-white dark:group-hover:to-slate-200 transition-colors select-none">02</span>
+              </div>
+              <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-2 transition-theme">Create</h4>
+              <p class="text-slate-600 dark:text-slate-400 mb-6 min-h-[48px] leading-relaxed transition-theme">Tracking progress and forecasting growth.</p>
+              <ul class="space-y-3">
+                <li class="flex items-start text-sm text-slate-600 dark:text-slate-400 transition-theme"><div class="mt-1 mr-3 w-4 h-4 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-check text-green-600 dark:text-green-400 text-[10px]"></i></div> Financial Forecast</li>
+                <li class="flex items-start text-sm text-slate-600 dark:text-slate-400 transition-theme"><div class="mt-1 mr-3 w-4 h-4 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-check text-green-600 dark:text-green-400 text-[10px]"></i></div> Budget Planning</li>
+                <li class="flex items-start text-sm text-slate-600 dark:text-slate-400 transition-theme"><div class="mt-1 mr-3 w-4 h-4 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-check text-green-600 dark:text-green-400 text-[10px]"></i></div> KPI Defining</li>
+                <li class="flex items-start text-sm text-slate-600 dark:text-slate-400 transition-theme"><div class="mt-1 mr-3 w-4 h-4 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-check text-green-600 dark:text-green-400 text-[10px]"></i></div> BI Analytics</li>
+              </ul>
+            </div>
+
+            <!-- Stage 3 -->
+            <div class="bg-white/70 dark:bg-slate-800/40 backdrop-blur-md border border-white/50 dark:border-white/5 rounded-2xl p-8 transition-all duration-300 group shadow-sm hover:shadow-xl hover:shadow-blue-900/5 transform hover:-translate-y-2 hover:scale-105">
+              <div class="flex items-center justify-between mb-6">
+                <div class="w-14 h-14 rounded-xl flex items-center justify-center bg-white dark:bg-slate-700 shadow-md border border-slate-100 dark:border-slate-600 group-hover:scale-110 transition-transform duration-300">
+                  <i class="fa-solid fa-rocket text-2xl text-transparent bg-clip-text bg-gradient-to-br from-brand-primary to-brand-secondary"></i>
+                </div>
+                <span class="text-5xl font-serif font-bold text-slate-200 dark:text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-b group-hover:from-slate-200 group-hover:to-slate-100 dark:group-hover:from-white dark:group-hover:to-slate-200 transition-colors select-none">03</span>
+              </div>
+              <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-2 transition-theme">Execute</h4>
+              <p class="text-slate-600 dark:text-slate-400 mb-6 min-h-[48px] leading-relaxed transition-theme">Bringing strategies to life and building workflows.</p>
+              <ul class="space-y-3">
+                <li class="flex items-start text-sm text-slate-600 dark:text-slate-400 transition-theme"><div class="mt-1 mr-3 w-4 h-4 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-check text-green-600 dark:text-green-400 text-[10px]"></i></div> Business Workflow</li>
+                <li class="flex items-start text-sm text-slate-600 dark:text-slate-400 transition-theme"><div class="mt-1 mr-3 w-4 h-4 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-check text-green-600 dark:text-green-400 text-[10px]"></i></div> Investor Reporting</li>
+                <li class="flex items-start text-sm text-slate-600 dark:text-slate-400 transition-theme"><div class="mt-1 mr-3 w-4 h-4 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-check text-green-600 dark:text-green-400 text-[10px]"></i></div> Operation Strategies</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services Section (Interactive Tabs) -->
+      <section id="services" class="py-24 relative overflow-hidden transition-theme">
+        <!-- Local decorative elements -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+          <div class="absolute top-1/2 left-0 -translate-y-1/2 w-[600px] h-[600px] bg-brand-primary/5 dark:bg-brand-primary/10 rounded-full blur-3xl opacity-50"></div>
+          <div class="absolute bottom-0 right-0 w-[600px] h-[600px] bg-brand-secondary/5 dark:bg-brand-secondary/10 rounded-full blur-3xl opacity-50"></div>
+        </div>
+
+        <div class="container mx-auto px-4 relative z-10">
+          <div class="text-center mb-16">
+            <h2 class="text-brand-primary dark:text-brand-secondary font-bold uppercase tracking-widest text-sm mb-2 transition-theme">Our Expertise</h2>
+            <h3 class="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white font-bold mb-4 transition-theme">Comprehensive Solutions</h3>
+            <p class="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed transition-theme">
+              We offer a wide range of specialized services designed to handle the complexities of financial management and strategic planning.
+            </p>
+          </div>
+
+          <div class="flex flex-col lg:flex-row gap-8 max-w-7xl mx-auto">
+            <!-- Left Side: Vertical Tabs -->
+            <div class="lg:w-1/3 flex flex-col gap-3" id="service-tabs">
+              <!-- Tab 1 -->
+              <button data-target="cat-investment-management" class="service-tab active group w-full text-left px-6 py-5 rounded-xl text-sm font-semibold transition-all duration-300 flex items-center gap-4 border bg-gradient-brand text-white border-transparent shadow-lg shadow-blue-500/30 transform scale-[1.02] ring-2 ring-offset-2 ring-brand-primary/20 z-10">
+                <div class="tab-icon w-8 h-8 rounded-lg flex items-center justify-center transition-colors flex-shrink-0 bg-white/20 text-white">
+                    <i class="fa-solid fa-sack-dollar text-lg"></i>
+                </div>
+                <span class="text-base truncate">Investment Management</span>
+                <i class="fa-solid fa-chevron-right ml-auto text-xs opacity-80 indicator"></i>
+              </button>
+              <!-- Tab 2 -->
+              <button data-target="cat-investment-relations" class="service-tab group w-full text-left px-6 py-5 rounded-xl text-sm font-semibold transition-all duration-300 flex items-center gap-4 border bg-white/60 dark:bg-white/5 backdrop-blur-sm text-slate-600 dark:text-slate-300 border-white/50 dark:border-white/10 hover:border-brand-primary/50 dark:hover:border-brand-secondary/50 hover:text-brand-primary dark:hover:text-white hover:shadow-md hover:bg-white/80 dark:hover:bg-white/10">
+                <div class="tab-icon w-8 h-8 rounded-lg flex items-center justify-center transition-colors flex-shrink-0 bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500 group-hover:bg-blue-50 dark:group-hover:bg-slate-700 group-hover:text-brand-primary dark:group-hover:text-white">
+                    <i class="fa-solid fa-handshake text-lg"></i>
+                </div>
+                <span class="text-base truncate">Investment Relations</span>
+                <i class="fa-solid fa-chevron-right ml-auto text-xs opacity-80 indicator hidden"></i>
+              </button>
+              <!-- Tab 3 -->
+              <button data-target="cat-internal-management" class="service-tab group w-full text-left px-6 py-5 rounded-xl text-sm font-semibold transition-all duration-300 flex items-center gap-4 border bg-white/60 dark:bg-white/5 backdrop-blur-sm text-slate-600 dark:text-slate-300 border-white/50 dark:border-white/10 hover:border-brand-primary/50 dark:hover:border-brand-secondary/50 hover:text-brand-primary dark:hover:text-white hover:shadow-md hover:bg-white/80 dark:hover:bg-white/10">
+                <div class="tab-icon w-8 h-8 rounded-lg flex items-center justify-center transition-colors flex-shrink-0 bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500 group-hover:bg-blue-50 dark:group-hover:bg-slate-700 group-hover:text-brand-primary dark:group-hover:text-white">
+                    <i class="fa-solid fa-people-group text-lg"></i>
+                </div>
+                <span class="text-base truncate">Internal Management</span>
+                <i class="fa-solid fa-chevron-right ml-auto text-xs opacity-80 indicator hidden"></i>
+              </button>
+              <!-- Tab 4 -->
+              <button data-target="cat-customized-solutions" class="service-tab group w-full text-left px-6 py-5 rounded-xl text-sm font-semibold transition-all duration-300 flex items-center gap-4 border bg-white/60 dark:bg-white/5 backdrop-blur-sm text-slate-600 dark:text-slate-300 border-white/50 dark:border-white/10 hover:border-brand-primary/50 dark:hover:border-brand-secondary/50 hover:text-brand-primary dark:hover:text-white hover:shadow-md hover:bg-white/80 dark:hover:bg-white/10">
+                <div class="tab-icon w-8 h-8 rounded-lg flex items-center justify-center transition-colors flex-shrink-0 bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500 group-hover:bg-blue-50 dark:group-hover:bg-slate-700 group-hover:text-brand-primary dark:group-hover:text-white">
+                    <i class="fa-solid fa-puzzle-piece text-lg"></i>
+                </div>
+                <span class="text-base truncate">Customized Solutions</span>
+                <i class="fa-solid fa-chevron-right ml-auto text-xs opacity-80 indicator hidden"></i>
+              </button>
+            </div>
+
+            <!-- Right Side: Content Panels -->
+            <div class="lg:w-2/3 relative min-h-[500px]">
+              
+              <!-- Content 1 -->
+              <div id="cat-investment-management" class="service-content bg-white/80 dark:bg-slate-900/60 backdrop-blur-md rounded-3xl p-8 md:p-10 shadow-xl border border-white/50 dark:border-white/10 animate-fade-in-right relative overflow-hidden h-full transition-theme">
+                 <div class="absolute top-0 left-0 w-full h-1 bg-gradient-brand"></div>
+                 <div class="flex flex-col gap-6 mb-8 border-b border-slate-100 dark:border-slate-700 pb-6 transition-theme">
+                     <div>
+                        <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-2 flex items-center gap-3 transition-theme">Category A: Investment Management</h4>
+                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed transition-theme">Detailed breakdown of services included in this category. We ensure every aspect is covered with precision.</p>
+                     </div>
+                 </div>
+                 <div class="grid grid-cols-1 gap-4">
+                      <!-- Item -->
+                      <div class="group p-5 rounded-xl border border-slate-100 dark:border-slate-700/50 hover:border-blue-200 dark:hover:border-indigo-500/30 hover:bg-white/50 dark:hover:bg-white/5 transition-all duration-300 flex flex-col sm:flex-row gap-4 items-start">
+                         <div class="mt-1 w-6 h-6 rounded-full bg-gradient-brand flex items-center justify-center shrink-0 shadow-sm"><i class="fa-solid fa-check text-white text-[10px]"></i></div>
+                         <div>
+                            <h5 class="text-base font-bold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-brand-primary group-hover:to-brand-secondary transition-colors duration-300">Financial Forecasting/Modelling</h5>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed group-hover:text-white transition-colors duration-300">Building complete forecasts based on revenue models to achieve justifiable numbers (PnL statements).</p>
+                         </div>
+                      </div>
+                      <!-- Item -->
+                      <div class="group p-5 rounded-xl border border-slate-100 dark:border-slate-700/50 hover:border-blue-200 dark:hover:border-indigo-500/30 hover:bg-white/50 dark:hover:bg-white/5 transition-all duration-300 flex flex-col sm:flex-row gap-4 items-start">
+                         <div class="mt-1 w-6 h-6 rounded-full bg-gradient-brand flex items-center justify-center shrink-0 shadow-sm"><i class="fa-solid fa-check text-white text-[10px]"></i></div>
+                         <div>
+                            <h5 class="text-base font-bold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-brand-primary group-hover:to-brand-secondary transition-colors duration-300">Valuation Model & Report</h5>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed group-hover:text-white transition-colors duration-300">Constructing fair valuation models to price the company per share.</p>
+                         </div>
+                      </div>
+                      <!-- Item -->
+                      <div class="group p-5 rounded-xl border border-slate-100 dark:border-slate-700/50 hover:border-blue-200 dark:hover:border-indigo-500/30 hover:bg-white/50 dark:hover:bg-white/5 transition-all duration-300 flex flex-col sm:flex-row gap-4 items-start">
+                         <div class="mt-1 w-6 h-6 rounded-full bg-gradient-brand flex items-center justify-center shrink-0 shadow-sm"><i class="fa-solid fa-check text-white text-[10px]"></i></div>
+                         <div>
+                            <h5 class="text-base font-bold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-brand-primary group-hover:to-brand-secondary transition-colors duration-300">Cap Table Management</h5>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed group-hover:text-white transition-colors duration-300">Planning fundraising rounds, dilution, and share pricing.</p>
+                         </div>
+                      </div>
+                 </div>
+                 <div class="mt-8 flex justify-end">
+                    <a href="https://calendly.com/kenneth-exstrat/30min" target="_blank" rel="noopener noreferrer" class="px-6 py-2.5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-200 font-medium text-sm rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 flex items-center gap-2 group">
+                       Get Started <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                 </div>
+              </div>
+
+              <!-- Content 2 -->
+              <div id="cat-investment-relations" class="service-content hidden bg-white/80 dark:bg-slate-900/60 backdrop-blur-md rounded-3xl p-8 md:p-10 shadow-xl border border-white/50 dark:border-white/10 animate-fade-in-right relative overflow-hidden h-full transition-theme">
+                 <div class="absolute top-0 left-0 w-full h-1 bg-gradient-brand"></div>
+                 <div class="flex flex-col gap-6 mb-8 border-b border-slate-100 dark:border-slate-700 pb-6 transition-theme">
+                     <div>
+                        <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-2 flex items-center gap-3 transition-theme">Category B: Investment Relations</h4>
+                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed transition-theme">Designing better presentation flows and dashboards.</p>
+                     </div>
+                 </div>
+                 <div class="grid grid-cols-1 gap-4">
+                      <!-- Item -->
+                      <div class="group p-5 rounded-xl border border-slate-100 dark:border-slate-700/50 hover:border-blue-200 dark:hover:border-indigo-500/30 hover:bg-white/50 dark:hover:bg-white/5 transition-all duration-300 flex flex-col sm:flex-row gap-4 items-start">
+                         <div class="mt-1 w-6 h-6 rounded-full bg-gradient-brand flex items-center justify-center shrink-0 shadow-sm"><i class="fa-solid fa-check text-white text-[10px]"></i></div>
+                         <div>
+                            <h5 class="text-base font-bold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-brand-primary group-hover:to-brand-secondary transition-colors duration-300">Pitch Deck Construction</h5>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed group-hover:text-white transition-colors duration-300">Designing better presentation flows for fundraising and stakeholder engagement.</p>
+                         </div>
+                      </div>
+                      <!-- Item -->
+                      <div class="group p-5 rounded-xl border border-slate-100 dark:border-slate-700/50 hover:border-blue-200 dark:hover:border-indigo-500/30 hover:bg-white/50 dark:hover:bg-white/5 transition-all duration-300 flex flex-col sm:flex-row gap-4 items-start">
+                         <div class="mt-1 w-6 h-6 rounded-full bg-gradient-brand flex items-center justify-center shrink-0 shadow-sm"><i class="fa-solid fa-check text-white text-[10px]"></i></div>
+                         <div>
+                            <h5 class="text-base font-bold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-brand-primary group-hover:to-brand-secondary transition-colors duration-300">Investor Reporting</h5>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed group-hover:text-white transition-colors duration-300">Creating dashboards for investors to view less sensitive performance data transparently.</p>
+                         </div>
+                      </div>
+                 </div>
+                 <div class="mt-8 flex justify-end">
+                    <a href="https://calendly.com/kenneth-exstrat/30min" target="_blank" rel="noopener noreferrer" class="px-6 py-2.5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-200 font-medium text-sm rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 flex items-center gap-2 group">
+                       Get Started <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                 </div>
+              </div>
+
+              <!-- Content 3 -->
+              <div id="cat-internal-management" class="service-content hidden bg-white/80 dark:bg-slate-900/60 backdrop-blur-md rounded-3xl p-8 md:p-10 shadow-xl border border-white/50 dark:border-white/10 animate-fade-in-right relative overflow-hidden h-full transition-theme">
+                 <div class="absolute top-0 left-0 w-full h-1 bg-gradient-brand"></div>
+                 <div class="flex flex-col gap-6 mb-8 border-b border-slate-100 dark:border-slate-700 pb-6 transition-theme">
+                     <div>
+                        <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-2 flex items-center gap-3 transition-theme">Category C: Internal Management</h4>
+                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed transition-theme">Optimizing operations, strategy, and reporting workflows.</p>
+                     </div>
+                 </div>
+                 <div class="grid grid-cols-1 gap-4">
+                      <!-- Item -->
+                      <div class="group p-5 rounded-xl border border-slate-100 dark:border-slate-700/50 hover:border-blue-200 dark:hover:border-indigo-500/30 hover:bg-white/50 dark:hover:bg-white/5 transition-all duration-300 flex flex-col sm:flex-row gap-4 items-start">
+                         <div class="mt-1 w-6 h-6 rounded-full bg-gradient-brand flex items-center justify-center shrink-0 shadow-sm"><i class="fa-solid fa-check text-white text-[10px]"></i></div>
+                         <div>
+                            <h5 class="text-base font-bold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-brand-primary group-hover:to-brand-secondary transition-colors duration-300">Finance Reporting Dashboard</h5>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed group-hover:text-white transition-colors duration-300">Comprehensive views of sales, operations, and product development for decision-making.</p>
+                         </div>
+                      </div>
+                      <!-- Item -->
+                      <div class="group p-5 rounded-xl border border-slate-100 dark:border-slate-700/50 hover:border-blue-200 dark:hover:border-indigo-500/30 hover:bg-white/50 dark:hover:bg-white/5 transition-all duration-300 flex flex-col sm:flex-row gap-4 items-start">
+                         <div class="mt-1 w-6 h-6 rounded-full bg-gradient-brand flex items-center justify-center shrink-0 shadow-sm"><i class="fa-solid fa-check text-white text-[10px]"></i></div>
+                         <div>
+                            <h5 class="text-base font-bold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-brand-primary group-hover:to-brand-secondary transition-colors duration-300">Strategic Planning</h5>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed group-hover:text-white transition-colors duration-300">Analyzing market trends and tracking growth strategies.</p>
+                         </div>
+                      </div>
+                      <!-- Item -->
+                      <div class="group p-5 rounded-xl border border-slate-100 dark:border-slate-700/50 hover:border-blue-200 dark:hover:border-indigo-500/30 hover:bg-white/50 dark:hover:bg-white/5 transition-all duration-300 flex flex-col sm:flex-row gap-4 items-start">
+                        <div class="mt-1 w-6 h-6 rounded-full bg-gradient-brand flex items-center justify-center shrink-0 shadow-sm"><i class="fa-solid fa-check text-white text-[10px]"></i></div>
+                        <div>
+                           <h5 class="text-base font-bold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-brand-primary group-hover:to-brand-secondary transition-colors duration-300">Product Design & Workflow</h5>
+                           <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed group-hover:text-white transition-colors duration-300">Analyzing user journeys and removing bottlenecks in operations.</p>
+                        </div>
+                     </div>
+                      <!-- Item -->
+                      <div class="group p-5 rounded-xl border border-slate-100 dark:border-slate-700/50 hover:border-blue-200 dark:hover:border-indigo-500/30 hover:bg-white/50 dark:hover:bg-white/5 transition-all duration-300 flex flex-col sm:flex-row gap-4 items-start">
+                        <div class="mt-1 w-6 h-6 rounded-full bg-gradient-brand flex items-center justify-center shrink-0 shadow-sm"><i class="fa-solid fa-check text-white text-[10px]"></i></div>
+                        <div>
+                           <h5 class="text-base font-bold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-brand-primary group-hover:to-brand-secondary transition-colors duration-300">Performance Reporting</h5>
+                           <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed group-hover:text-white transition-colors duration-300">Comparing forecasted outcomes vs. actual results to identify discrepancies.</p>
+                        </div>
+                     </div>
+                      <!-- Item -->
+                      <div class="group p-5 rounded-xl border border-slate-100 dark:border-slate-700/50 hover:border-blue-200 dark:hover:border-indigo-500/30 hover:bg-white/50 dark:hover:bg-white/5 transition-all duration-300 flex flex-col sm:flex-row gap-4 items-start">
+                        <div class="mt-1 w-6 h-6 rounded-full bg-gradient-brand flex items-center justify-center shrink-0 shadow-sm"><i class="fa-solid fa-check text-white text-[10px]"></i></div>
+                        <div>
+                           <h5 class="text-base font-bold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-brand-primary group-hover:to-brand-secondary transition-colors duration-300">Task Tracking</h5>
+                           <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed group-hover:text-white transition-colors duration-300">Facilitating weekly meetings to report progress and maintain accountability.</p>
+                        </div>
+                     </div>
+                 </div>
+                 <div class="mt-8 flex justify-end">
+                    <a href="https://calendly.com/kenneth-exstrat/30min" target="_blank" rel="noopener noreferrer" class="px-6 py-2.5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-200 font-medium text-sm rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 flex items-center gap-2 group">
+                       Get Started <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                 </div>
+              </div>
+
+               <!-- Content 4 -->
+               <div id="cat-customized-solutions" class="service-content hidden bg-white/80 dark:bg-slate-900/60 backdrop-blur-md rounded-3xl p-8 md:p-10 shadow-xl border border-white/50 dark:border-white/10 animate-fade-in-right relative overflow-hidden h-full transition-theme">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-brand"></div>
+                <div class="flex flex-col gap-6 mb-8 border-b border-slate-100 dark:border-slate-700 pb-6 transition-theme">
+                    <div>
+                       <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-2 flex items-center gap-3 transition-theme">Category D: Customized Solutions</h4>
+                       <p class="text-slate-500 dark:text-slate-400 leading-relaxed transition-theme">Tailored solutions for specialized needs.</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 gap-4">
+                     <!-- Item -->
+                     <div class="group p-5 rounded-xl border border-slate-100 dark:border-slate-700/50 hover:border-blue-200 dark:hover:border-indigo-500/30 hover:bg-white/50 dark:hover:bg-white/5 transition-all duration-300 flex flex-col sm:flex-row gap-4 items-start">
+                        <div class="mt-1 w-6 h-6 rounded-full bg-gradient-brand flex items-center justify-center shrink-0 shadow-sm"><i class="fa-solid fa-check text-white text-[10px]"></i></div>
+                        <div>
+                           <h5 class="text-base font-bold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-brand-primary group-hover:to-brand-secondary transition-colors duration-300">Specialized Requests</h5>
+                           <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed group-hover:text-white transition-colors duration-300">Tailored solutions for specialized workforce needs or automation of repetitive operational tasks.</p>
+                        </div>
+                     </div>
+                </div>
+                <div class="mt-8 flex justify-end">
+                   <a href="https://calendly.com/kenneth-exstrat/30min" target="_blank" rel="noopener noreferrer" class="px-6 py-2.5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-200 font-medium text-sm rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 flex items-center gap-2 group">
+                      Get Started <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                   </a>
+                </div>
+             </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="py-24 relative overflow-hidden transition-theme">
+        <!-- Decorative elements -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-brand-secondary/5 dark:bg-brand-secondary/10 rounded-full blur-3xl -mr-32 -mt-32 pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-brand-primary/5 dark:bg-brand-primary/10 rounded-full blur-3xl -ml-32 -mb-32 pointer-events-none"></div>
+
+        <div class="container mx-auto px-4 relative z-10">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="order-2 lg:order-1">
+               <div class="relative">
+                  <img src="https://picsum.photos/id/60/800/600?grayscale" alt="Team meeting" class="rounded-2xl shadow-2xl border-4 border-white/50 dark:border-white/10 relative z-10">
+                  <div class="absolute -bottom-6 -right-6 w-2/3 h-2/3 bg-gradient-brand rounded-2xl opacity-10 -z-0"></div>
+               </div>
+            </div>
+            
+            <div class="order-1 lg:order-2">
+              <h2 class="text-brand-primary dark:text-brand-secondary font-bold uppercase tracking-widest text-sm mb-2 transition-theme">About Us</h2>
+              <h3 class="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white font-bold mb-6 transition-theme">Exstrat Ventures</h3>
+              
+              <div class="space-y-4 text-slate-600 dark:text-slate-300 leading-relaxed mb-8 text-lg transition-theme">
+                <p>
+                  At Exstrat Ventures, we bridge the critical gap between high-level strategy and on-the-ground execution. 
+                  We understand that a vision without a roadmap is just a dream, which is why we specialize in creating 
+                  sustainable frameworks for growth.
+                </p>
+                <p>
+                  Our team acts as an extension of your management, providing the financial discipline, investor relations expertise, 
+                  and operational workflows necessary to scale efficiently in today's competitive landscape.
+                </p>
+              </div>
+
+              <div id="stats-container" class="grid grid-cols-2 gap-6">
+                   <!-- Stat 1 -->
+                   <div class="stat-box" data-end="50" data-suffix="+">
+                     <h4 class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-brand mb-1 tabular-nums stat-value">0</h4>
+                     <p class="text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 font-bold">Projects Completed</p>
+                   </div>
+                   <!-- Stat 2 -->
+                   <div class="stat-box" data-end="3" data-suffix="+">
+                    <h4 class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-brand mb-1 tabular-nums stat-value">0</h4>
+                    <p class="text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 font-bold">Years Experience</p>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="py-24 relative">
+        <div class="container mx-auto px-4 max-w-5xl">
+          <div class="bg-white/80 backdrop-blur-md rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row border border-white/50">
+            
+            <!-- Contact Info Sidebar - Gradient Background -->
+            <div class="bg-gradient-to-br from-brand-primary to-brand-secondary p-10 md:w-2/5 flex flex-col justify-between text-white">
+              <div>
+                <h3 class="text-2xl font-serif font-bold mb-6">Let's Connect</h3>
+                <p class="text-blue-100 text-sm mb-8 leading-relaxed">
+                  Ready to transform your business strategy into actionable results? Schedule a consultation today.
+                </p>
+                
+                <div class="space-y-6">
+                  <div class="flex items-start">
+                    <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center mr-4 backdrop-blur-sm">
+                      <i class="fa-solid fa-envelope text-white text-sm"></i>
+                    </div>
+                    <div>
+                      <span class="block text-xs uppercase text-blue-200 font-bold mb-1">Email</span>
+                      <a href="mailto:contact@exstrat.com" class="text-white hover:text-blue-100 transition-colors">contact@exstrat.com</a>
+                    </div>
+                  </div>
+                  <div class="flex items-start">
+                    <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center mr-4 backdrop-blur-sm">
+                      <i class="fa-solid fa-location-dot text-white text-sm"></i>
+                    </div>
+                    <div>
+                      <span class="block text-xs uppercase text-blue-200 font-bold mb-1">Office</span>
+                      <span class="text-white">Kuala Lumpur, Malaysia</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="mt-12">
+                <div class="flex space-x-4">
+                  <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white hover:text-brand-primary transition-all duration-300">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                  </a>
+                  <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white hover:text-brand-primary transition-all duration-300">
+                    <i class="fa-brands fa-twitter"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Form -->
+            <div class="p-10 md:w-3/5">
+                <form id="contact-form" class="space-y-6">
+                  <div class="grid grid-cols-1 gap-6">
+                      <div>
+                        <label htmlFor="name" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Full Name</label>
+                        <input type="text" id="name" name="name" required class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-slate-800 focus:outline-none focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 transition-all placeholder-slate-400" placeholder="John Doe">
+                      </div>
+                      <div>
+                        <label htmlFor="email" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Email Address</label>
+                        <input type="email" id="email" name="email" required class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-slate-800 focus:outline-none focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 transition-all placeholder-slate-400" placeholder="john@company.com">
+                      </div>
+                      <div>
+                        <label htmlFor="service" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Service Interest</label>
+                        <div class="relative">
+                            <select id="service" name="service" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-slate-800 focus:outline-none focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 transition-all appearance-none">
+                                <option>General Inquiry</option>
+                                <option>Investment Management</option>
+                                <option>Investment Relations</option>
+                                <option>Internal Management</option>
+                                <option>Customized Solutions</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500">
+                                <i class="fa-solid fa-chevron-down text-xs"></i>
+                            </div>
+                        </div>
+                      </div>
+                      <div>
+                        <label htmlFor="message" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Message</label>
+                        <textarea id="message" name="message" rows="4" required class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-slate-800 focus:outline-none focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 transition-all placeholder-slate-400" placeholder="Tell us about your project or goals..."></textarea>
+                      </div>
+                  </div>
+                  <button type="submit" class="w-full bg-gradient-brand hover:opacity-90 text-white font-bold py-4 rounded-lg transition-all duration-300 transform hover:-translate-y-1 shadow-lg shadow-blue-500/30">
+                      Send Message
+                  </button>
+                </form>
+                <div id="form-success" class="hidden h-full flex-col items-center justify-center text-center py-10">
+                    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-6 animate-bounce">
+                        <i class="fa-solid fa-check text-green-500 text-3xl"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-slate-800 mb-2">Message Sent</h4>
+                    <p class="text-slate-500">Thank you for reaching out. We will get back to you shortly.</p>
+                </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="bg-white/30 dark:bg-slate-900/30 backdrop-blur-sm border-t border-slate-200/50 dark:border-white/10 pt-16 pb-8 transition-theme">
+        <div class="container mx-auto px-4">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <div class="col-span-1 md:col-span-2">
+              <a href="#home" class="text-2xl font-serif font-bold text-slate-900 dark:text-white mb-4 block flex items-center gap-2 transition-theme">
+                 <span class="text-transparent bg-clip-text bg-gradient-brand">Exstrat Ventures</span>
+              </a>
+              <p class="text-slate-500 dark:text-slate-400 max-w-sm mb-6 leading-relaxed transition-theme">
+                Your Strategic Partner for Sustainable Growth. We help businesses align their vision with actionable goals through comprehensive financial and management consulting.
+              </p>
+            </div>
+            
+            <div>
+              <h4 class="text-slate-900 dark:text-white font-bold mb-4 uppercase text-sm tracking-wider transition-theme">Quick Links</h4>
+              <ul class="space-y-3">
+                <li><a href="#home" class="text-slate-500 dark:text-slate-400 hover:text-brand-primary dark:hover:text-white transition-colors text-sm">Home</a></li>
+                <li><a href="#approach" class="text-slate-500 dark:text-slate-400 hover:text-brand-primary dark:hover:text-white transition-colors text-sm">Our Approach</a></li>
+                <li><a href="#services" class="text-slate-500 dark:text-slate-400 hover:text-brand-primary dark:hover:text-white transition-colors text-sm">Services</a></li>
+                <li><a href="#about" class="text-slate-500 dark:text-slate-400 hover:text-brand-primary dark:hover:text-white transition-colors text-sm">About Us</a></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 class="text-slate-900 dark:text-white font-bold mb-4 uppercase text-sm tracking-wider transition-theme">Legal</h4>
+              <ul class="space-y-3">
+                <li><a href="#" class="text-slate-500 dark:text-slate-400 hover:text-brand-primary dark:hover:text-white transition-colors text-sm">Privacy Policy</a></li>
+                <li><a href="#" class="text-slate-500 dark:text-slate-400 hover:text-brand-primary dark:hover:text-white transition-colors text-sm">Terms of Service</a></li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="border-t border-slate-200/50 dark:border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-slate-400 dark:text-slate-500 transition-theme">
+            <p>&copy; 2023 Exstrat Ventures (KT0595268-K). All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Logic Script -->
+    <script>
+      // Smooth Scroll
+      function smoothScroll(e, targetId) {
+        e.preventDefault();
+        const element = document.querySelector(targetId);
+        if (element) {
+          const headerOffset = 80;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+          
+          // Close mobile menu if open
+          const mobileMenu = document.getElementById('mobile-menu');
+          mobileMenu.style.maxHeight = '0px';
+          mobileMenu.style.opacity = '0';
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        // --- Navbar Scroll Effect ---
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+          const isScrolled = window.scrollY > 20;
+          const isDark = document.documentElement.classList.contains('dark');
+          
+          if (isScrolled) {
+            navbar.classList.remove('bg-transparent');
+            if (isDark) {
+               navbar.classList.add('bg-[#0f172a]/80', 'backdrop-blur-md', 'shadow-lg', 'border-b', 'border-white/10');
+               navbar.classList.remove('bg-white/90', 'border-slate-200');
+            } else {
+               navbar.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm', 'border-b', 'border-slate-200');
+               navbar.classList.remove('bg-[#0f172a]/80', 'border-white/10');
+            }
+          } else {
+            navbar.className = 'fixed w-full z-50 transition-all duration-500 py-3 bg-transparent';
+          }
+        });
+
+        // --- Mobile Menu Toggle ---
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        let isMenuOpen = false;
+
+        mobileBtn.addEventListener('click', () => {
+          isMenuOpen = !isMenuOpen;
+          if (isMenuOpen) {
+            mobileMenu.style.maxHeight = '500px';
+            mobileMenu.style.opacity = '1';
+            mobileBtn.innerHTML = '<i class="fa-solid fa-xmark text-2xl"></i>';
+          } else {
+            mobileMenu.style.maxHeight = '0px';
+            mobileMenu.style.opacity = '0';
+            mobileBtn.innerHTML = '<i class="fa-solid fa-bars text-2xl"></i>';
+          }
+        });
+        
+        // --- Dark Mode Scroll Trigger ---
+        const servicesSection = document.getElementById('services');
+        const bgLight = document.getElementById('bg-light');
+        const bgDark = document.getElementById('bg-dark');
+        
+        const darkModeObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+             const navbar = document.getElementById('navbar');
+             if (entry.isIntersecting) {
+               document.documentElement.classList.add('dark');
+               bgLight.classList.remove('opacity-100');
+               bgLight.classList.add('opacity-0');
+               bgDark.classList.remove('opacity-0');
+               bgDark.classList.add('opacity-100');
+               
+               // Update nav if scrolled
+               if(window.scrollY > 20) {
+                  navbar.classList.remove('bg-white/90', 'border-slate-200');
+                  navbar.classList.add('bg-[#0f172a]/80', 'border-white/10');
+               }
+             } else {
+               document.documentElement.classList.remove('dark');
+               bgLight.classList.remove('opacity-0');
+               bgLight.classList.add('opacity-100');
+               bgDark.classList.remove('opacity-100');
+               bgDark.classList.add('opacity-0');
+
+               // Update nav if scrolled
+               if(window.scrollY > 20) {
+                  navbar.classList.remove('bg-[#0f172a]/80', 'border-white/10');
+                  navbar.classList.add('bg-white/90', 'border-slate-200');
+               }
+             }
+          });
+        }, { threshold: 0.3, rootMargin: "-10% 0px -10% 0px" });
+        
+        if (servicesSection) darkModeObserver.observe(servicesSection);
+
+        // --- Service Tabs Logic ---
+        const tabs = document.querySelectorAll('.service-tab');
+        const contents = document.querySelectorAll('.service-content');
+        
+        tabs.forEach(tab => {
+          tab.addEventListener('click', () => {
+            // Deactivate all
+            tabs.forEach(t => {
+               t.classList.remove('bg-gradient-brand', 'text-white', 'shadow-lg', 'scale-[1.02]', 'ring-2', 'ring-offset-2', 'ring-brand-primary/20', 'z-10');
+               t.classList.add('bg-white/60', 'dark:bg-white/5', 'text-slate-600', 'dark:text-slate-300');
+               t.querySelector('.tab-icon').classList.remove('bg-white/20', 'text-white');
+               t.querySelector('.tab-icon').classList.add('bg-slate-100', 'dark:bg-slate-800', 'text-slate-400', 'dark:text-slate-500');
+               t.querySelector('.indicator').classList.add('hidden');
+            });
+
+            // Activate Clicked
+            tab.classList.remove('bg-white/60', 'dark:bg-white/5', 'text-slate-600', 'dark:text-slate-300');
+            tab.classList.add('bg-gradient-brand', 'text-white', 'shadow-lg', 'scale-[1.02]', 'ring-2', 'ring-offset-2', 'ring-brand-primary/20', 'z-10');
+            tab.querySelector('.tab-icon').classList.remove('bg-slate-100', 'dark:bg-slate-800', 'text-slate-400', 'dark:text-slate-500');
+            tab.querySelector('.tab-icon').classList.add('bg-white/20', 'text-white');
+            tab.querySelector('.indicator').classList.remove('hidden');
+
+            // Switch Content
+            const target = tab.getAttribute('data-target');
+            contents.forEach(c => {
+               c.classList.add('hidden');
+               // Reset animation class to trigger re-flow if needed
+               c.classList.remove('animate-fade-in-right'); 
+            });
+            const activeContent = document.getElementById(target);
+            activeContent.classList.remove('hidden');
+            void activeContent.offsetWidth; // Trigger reflow
+            activeContent.classList.add('animate-fade-in-right');
+          });
+        });
+
+        // --- Count Up Animation ---
+        const statsSection = document.getElementById('stats-container');
+        const statBoxes = document.querySelectorAll('.stat-box');
+        let animated = false;
+
+        const statsObserver = new IntersectionObserver((entries) => {
+          if (entries[0].isIntersecting && !animated) {
+            animated = true;
+            statBoxes.forEach(box => {
+              const end = parseInt(box.getAttribute('data-end'));
+              const suffix = box.getAttribute('data-suffix');
+              const valueEl = box.querySelector('.stat-value');
+              let startTimestamp = null;
+              const duration = 2000;
+
+              const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                // Ease out cubic
+                const ease = 1 - Math.pow(1 - progress, 3);
+                valueEl.innerText = Math.floor(ease * end) + suffix;
+                if (progress < 1) {
+                  window.requestAnimationFrame(step);
+                }
+              };
+              window.requestAnimationFrame(step);
+            });
+          }
+        }, { threshold: 0.5 });
+        
+        if (statsSection) statsObserver.observe(statsSection);
+
+        // --- Contact Form Handling ---
+        const form = document.getElementById('contact-form');
+        const successMsg = document.getElementById('form-success');
+        
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          form.classList.add('hidden');
+          successMsg.classList.remove('hidden');
+          successMsg.classList.add('flex');
+          
+          setTimeout(() => {
+            form.reset();
+            successMsg.classList.add('hidden');
+            successMsg.classList.remove('flex');
+            form.classList.remove('hidden');
+          }, 5000);
+        });
+
+        // Attach Nav Links Click for smooth scroll
+        document.querySelectorAll('.nav-link, .mobile-link').forEach(link => {
+          link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if(href.startsWith('#')) {
+               smoothScroll(e, href);
+            }
+          });
+        });
+      });
+    </script>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
